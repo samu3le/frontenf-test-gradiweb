@@ -1,1 +1,79 @@
 @import "_config";
+
+body {
+    background-color: #fff;
+}
+
+.container {
+    align-content  : center;
+    align-items    : center;
+    display        : flex;
+    flex-direction : column;
+    min-width      : 350px;
+    height         : 100vh;
+    width          : 100%;
+    justify-content: flex-start;
+
+    @media screen and (min-width: 420px) {}
+
+    @media screen and (min-width: 768px) {
+        flex-direction : row;
+        justify-content: space-around;
+    }
+
+    @media screen and (min-width: 1024px) {}
+}
+
+.img_gallery {}
+
+.product_description {
+    color     : #000;
+    margin-top: 30px;
+
+    &--discount {
+        color          : rgb(194, 184, 184);
+        font-size      : 22px;
+        font-weight    : 600;
+        text-decoration: line-through;
+        margin-left    : 10px;
+    }
+
+    &--price {
+        font-size: 26px;
+    }
+
+    &--subtitle {
+        color      : rgb(194, 184, 184);
+        font-size  : 18px;
+        font-weight: 600;
+    }
+
+    &--title {
+        font-size    : 30px;
+        font-weight  : 600;
+        margin-bottom: 10px;
+
+    }
+
+    &--option1 {
+        margin-top   : 40px;
+        display      : flex;
+        border-top   : 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding      : 16px 0;
+    }
+
+    &--option2 {
+        display      : flex;
+        border-bottom: 1px solid #ddd;
+        padding      : 16px 0;
+    }
+
+    .variant-option {
+        margin-left: 10px;
+
+        input {
+            margin: 0 7px;
+        }
+    }
+}
