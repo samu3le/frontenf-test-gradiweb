@@ -1,4 +1,4 @@
-# frontend_test_gradiweb
+# frontend-test-gradiweb
 
 ## Project setup
 ```
