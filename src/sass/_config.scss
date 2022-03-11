@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+:root {
+    --form-control-color         : rebeccapurple;
+    --bg-color-body              : #fff;
+    --font-color-black           : #000;
+    --font-color-grey            : #ddd;
+    --font-color-grey-description: rgb(212, 209, 209);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
