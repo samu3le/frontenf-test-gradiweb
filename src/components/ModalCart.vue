@@ -26,7 +26,7 @@ import useArticle from "@/composables/useArticle.js";
 
 export default {
   name: "ModalCart",
-  setup(){
+  setup() {
     const { listCartData, listData } = useArticle();
     return {
       listCartData,

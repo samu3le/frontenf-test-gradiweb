@@ -114,26 +114,35 @@ export default {
     };
 
     const changeVariant = () => {
-      const colorChecked = document?.querySelector(".variant-option1 > input:checked");
-      const sizeChecked = document?.querySelector(".selector-item > input:checked");
+      const colorChecked = document?.querySelector(
+        ".variant-option1 > input:checked"
+      );
+      const sizeChecked = document?.querySelector(
+        ".selector-item > input:checked"
+      );
 
       if (colorChecked?.checked && sizeChecked?.checked) {
         const variantSearch = `${colorChecked.id} / ${sizeChecked.id}`;
         const variantFilter = listData.value.variants.filter(
           (e) => e.title === variantSearch
         );
-        document.querySelector(".product_description--title").innerHTML = variantFilter[0]?.name;
-        document.querySelector(".price--min_price").innerHTML = `${variantFilter[0]?.price}`;
-        document.querySelector(".product_description--discount").innerHTML = `$ ${variantFilter[0]?.compare_at_price}`;
+        document.querySelector(".product_description--title").innerHTML =
+          variantFilter[0]?.name;
+        document.querySelector(
+          ".price--min_price"
+        ).innerHTML = `${variantFilter[0]?.price}`;
+        document.querySelector(
+          ".product_description--discount"
+        ).innerHTML = `$ ${variantFilter[0]?.compare_at_price}`;
 
         totalPrice.value = calculatePrice();
-
       }
     };
 
     const addToCart = () => {
       const data = {
-        title: document.querySelector(".product_description--title")?.textContent,
+        title: document.querySelector(".product_description--title")
+          ?.textContent,
         quantity: quantity.value,
         price: getCurrentPrice(),
         total_pay: totalPrice.value,
