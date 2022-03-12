@@ -4,10 +4,12 @@
 :root {
     --bg-color-body              : #fff;
     --font-color-black           : #000;
+    --font-color-black-light     : rgb(43, 43, 43);
     --font-color-grey            : #ddd;
-    --font-color-grey-description: rgb(212, 209, 209);
+    --font-color-grey-light      : rgb(238, 227, 227);
+    --font-color-grey-description: rgb(228, 224, 224);
     --form-control-color         : rebeccapurple;
-    --modal-bg-color             : #ffffff73;
+    --modal-bg-color             : #28282896;
     --selector-box-shadow        : rgba(0, 0, 0, .5);
     --selector-shadow            : rgba(0, 0, 0, .2);
     --smoke-white                : #f1f3f5;

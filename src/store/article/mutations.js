@@ -14,4 +14,11 @@ export default {
         state.list.fetchingData = false
         state.list.errors = errors
     },
+
+    [types.CART_FETCH_SUCCESS](state, data) {
+        state.cart_shop.fetchingData = false
+        state.cart_shop.errors = null
+        state.cart_shop.data = data
+    },
 }
+

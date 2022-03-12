@@ -7,4 +7,9 @@ export default {
     errors: null,
     data: {},
   },
+  cart_shop: {
+    fetchingData: false,
+    errors: null,
+    data: {},
+  },
 };

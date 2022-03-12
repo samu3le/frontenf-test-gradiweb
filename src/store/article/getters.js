@@ -15,4 +15,9 @@ export default {
   listData(state) {
     return state.list.data;
   },
+
+  listCartData(state) {
+    console.log("listCartData, inside");
+    return state.cart_shop.data;
+  },
 };

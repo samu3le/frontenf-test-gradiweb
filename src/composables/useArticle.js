@@ -11,5 +11,7 @@ export default () => {
         listErrors: computed(() => store.getters[`${module}/listErrors`]),
         listData: computed(() => store.getters[`${module}/listData`]),
         getList: () => store.dispatch(`${module}/getList`),
+        listCartData: computed(() => store.getters[`${module}/listCartData`]),
+        setFetchingData: (e) => store.dispatch(`${module}/setFetchingData`, e),
     };
 };

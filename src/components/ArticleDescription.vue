@@ -33,24 +33,23 @@
     </div>
     <div class="product_description--option2">
       <span class="variant-title"> Size</span>
-
-        <div class="variant-option2">
-          <div
-            class="selector-item"
-            v-for="size of listData?.options[1].values"
-            :key="size.id"
-          >
-            <input
-              type="radio"
-              :id="size"
-              name="size"
-              class="selector-item_radio"
-              @change="changeVariant"
-            />
-            <label :for="size" class="selector-item_label" checked>{{
-              size
-            }}</label>
-          </div>
+      <div class="variant-option2">
+        <div
+          class="selector-item"
+          v-for="size of listData?.options[1].values"
+          :key="size.id"
+        >
+          <input
+            type="radio"
+            :id="size"
+            name="size"
+            class="selector-item_radio"
+            @change="changeVariant"
+          />
+          <label :for="size" class="selector-item_label" checked>{{
+            size
+          }}</label>
+        </div>
       </div>
     </div>
     <div class="product_description--quantity-price">
@@ -64,11 +63,8 @@
       </div>
     </div>
     <div class="product_description--actions_btn">
-      <button class="btn-favourite">Add to favourite</button>
-      
-      <button class="btn-cart" >
-        <a href="#trabajo-1">Add to cart</a>
-      </button>
+      <a class="btn-favourite" href="#">Add to favourite</a>
+      <a href="#trabajo-1" class="btn-cart" @click="addToCart"> Add to cart </a>
     </div>
     <div class="product_description--description_text">
       <span>
@@ -76,7 +72,7 @@
       </span>
     </div>
   </div>
-  <ModalCart/>
+  <ModalCart />
 </template>
 
 <script>
@@ -87,11 +83,9 @@ import ModalCart from "../components/ModalCart";
 
 export default {
   name: "ArticleDescription",
-  components:{
-    ModalCart,
-  },
+  components: { ModalCart },
   setup() {
-    const { listData } = useArticle();
+    const { listData, setFetchingData } = useArticle();
     let totalPrice = ref(1);
     let quantity = ref(1);
 
@@ -137,6 +131,15 @@ export default {
       }
     };
 
+    const addToCart = () => {
+      const data = {
+        title: document.querySelector(".product_description--title")?.textContent,
+        quantity: quantity.value,
+        price: getCurrentPrice(),
+        total_pay: totalPrice.value,
+      };
+      setFetchingData(data);
+    };
     return {
       listData,
       totalPrice,
@@ -144,6 +147,7 @@ export default {
       btnRmv,
       btnAdd,
       changeVariant,
+      addToCart,
     };
   },
 };

@@ -2,8 +2,9 @@ import * as types from "./types";
 import endpoint from "@/endpoint";
 
 export default {
-    setFetchingData({ commit }) {
-        commit(types.LIST_FETCH_REQUEST);
+    setFetchingData({ commit }, data) {
+        console.log("setFetchingData, inside", data);
+        commit(types.CART_FETCH_SUCCESS, data);
     },
     getList({ state, commit }) {
         console.log(state, "print state");

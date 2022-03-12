@@ -1,27 +1,37 @@
 <template>
   <article class="modal" id="trabajo-1">
     <div class="modal-content">
-    <a href="#close" class="modal-close">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path
-                        d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M16.207,14.793l-1.414,1.414L12,13.414 l-2.793,2.793l-1.414-1.414L10.586,12L7.793,9.207l1.414-1.414L12,10.586l2.793-2.793l1.414,1.414L13.414,12L16.207,14.793z" />
-                </svg>
-            </a>
-        <article class="portfolio-modal">
-            <img src="assets/portfolio-1.png" alt="trabajo 1">
-            <div class="portfolio-info">
-                <h3>Product</h3>
-                <p>Description</p>
-                
-            </div>
-        </article>
-
+      <article class="portfolio_modal">
+        <div class="portfolio_modal--image">
+          <img :src="listData?.media[0].src" alt="image_cart" />
+        </div>
+        <div class="portfolio-info">
+          <h2 class="title">Products List</h2>
+          <strong> {{ listCartData.title }} </strong>
+          <p><strong>Quantity: </strong>{{ listCartData.quantity }}</p>
+          <p><strong>Price: $ </strong>{{ listCartData.price }}</p>
+          <p><strong>Total: $ </strong>{{ listCartData.total_pay }}</p>
+          <div class="portfolio_info--btn_action">
+            <a class="btn-buy" href="#">Return</a>
+            <a href="#" class="btn-pay">Pay</a>
+          </div>
+        </div>
+      </article>
     </div>
   </article>
 </template>
 
 <script>
+import useArticle from "@/composables/useArticle.js";
+
 export default {
-    
-}
+  name: "ModalCart",
+  setup(){
+    const { listCartData, listData } = useArticle();
+    return {
+      listCartData,
+      listData,
+    };
+  },
+};
 </script>
