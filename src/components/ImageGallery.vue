@@ -1,136 +1,81 @@
 <template>
   <div class="img_gallery">
     <Splide :options="mainOptions" ref="main">
-      <SplideSlide>
-      
-        <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
-      </SplideSlide>
-            <SplideSlide>
-        <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
-      </SplideSlide>
-            <SplideSlide>
-        <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
-      </SplideSlide>
-      <SplideSlide>
-         <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
-      </SplideSlide>
-      <SplideSlide>
-         <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
-      </SplideSlide>
-      <SplideSlide>
-         <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
+      <SplideSlide v-for="image of listData.media" :key="image.position">
+        <img :src="image?.preview_image?.src" :alt="image.alt" />
       </SplideSlide>
     </Splide>
-
-    <Splide :options="thumbsOptions" ref="thumbs">
-      <SplideSlide>
-         <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
+    <div class="slider-secondary">
+      <Splide
+      :options="thumbsOptions"
+      ref="thumbs"
+      class="img_gallery--splide_slide"
+    >
+      <SplideSlide v-for="image of listData.media" :key="image.position">
+        <img :src="image?.preview_image?.src" :alt="image.alt" />
       </SplideSlide>
-            <SplideSlide>
-         <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
-      </SplideSlide>
-            <SplideSlide>
-         <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
-      </SplideSlide>
-      <SplideSlide>
-         <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
-      </SplideSlide>
-      <SplideSlide>
-         <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
-      </SplideSlide>
-      <SplideSlide>
-         <img
-          src="../assets/product-1.webp"
-          alt="slide.alt"
-        />
-      </SplideSlide>
-      
-      
     </Splide>
+    </div>   
   </div>
 </template>
 
 <script>
-import { Options } from '@splidejs/splide';
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
-import { defineComponent, onMounted, ref } from 'vue';
+import { Splide, SplideSlide } from "@splidejs/vue-splide";
+import { defineComponent, onMounted, ref } from "vue";
+import useArticle from "@/composables/useArticle.js";
 
-export default defineComponent( {
-  name: 'ThumbnailsExample',
+export default defineComponent({
+  name: "ThumbnailsExample",
   components: {
     Splide,
     SplideSlide,
   },
   setup() {
+    const { listData } = useArticle();
     const main = ref();
     const thumbs = ref();
-    const mainOptions= {
-      perPage   : 1,
-      perMove   : 1,
-      gap       : '1rem',
-      pagination: false,
-      arrows : false,
+    const mainOptions = {
+      perPage: 1,
+      perMove: 1,
+      gap: "1rem",
+      pagination: true,
+      arrows: false,
     };
-    const thumbsOptions= {
-      type        : 'slide',
-      rewind      : true,
-      gap         : '1rem',
-      pagination  : false,
-      fixedWidth  : 110,
-      fixedHeight : 70,
-      cover       : true,
-      focus       : 'center',
+    const thumbsOptions = {
+      type: "slide",
+      rewind: true,
+      gap: "1rem",
+      pagination: false,
+      fixedWidth: 110,
+      fixedHeight: 70,
+      cover: true,
+      focus: "center",
       isNavigation: true,
       updateOnMove: true,
     };
-    onMounted( () => {
+    onMounted(() => {
       const thumbsSplide = thumbs.value?.splide;
-      if ( thumbsSplide ) {
-        main.value?.sync( thumbsSplide );
+      if (thumbsSplide) {
+        main.value?.sync(thumbsSplide);
       }
-    } );
+    });
+
+/*     const getDimensions = () => {
+      const width = document.documentElement.clientWidth;
+      const height = document.documentElement.clientHeight;
+      console.log("width",width); 
+      console.log("height",height);
+    }; */
+
     return {
       main,
       thumbs,
       mainOptions,
       thumbsOptions,
-      Options,
-    }
+      listData,
+    };
   },
-} );
+});
 </script>
 
 <style lang="sass"></style>

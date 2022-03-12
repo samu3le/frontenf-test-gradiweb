@@ -1,13 +1,17 @@
 <template>
   <div class="container">
-    <ImageGallery />
-    <LoaderProduct />
+    <ImageGallery :list="listData?.media" />
+    <LoaderProduct :list="listData" />
   </div>
 </template>
 
 <script>
-import LoaderProduct from "./components/ArticleDescription.vue";
-import ImageGallery from "./components/ImageGallery.vue";
+import { onBeforeMount } from "vue";
+
+import LoaderProduct from "@/components/ArticleDescription.vue";
+import ImageGallery from "@/components/ImageGallery.vue";
+
+import useArticle from "@/composables/useArticle.js";
 
 export default {
   name: "Index",
@@ -16,7 +20,17 @@ export default {
     ImageGallery,
   },
   setup() {
-    return {};
+    const { listFetchingData, listErrors, listData, getList } = useArticle();
+
+    onBeforeMount(() => {
+      getList();
+      console.log(getList());
+    });
+    return {
+      listFetchingData,
+      listErrors,
+      listData,
+    };
   },
 };
 </script>
