@@ -7,15 +7,15 @@
     </Splide>
     <div class="slider-secondary">
       <Splide
-      :options="thumbsOptions"
-      ref="thumbs"
-      class="img_gallery--splide_slide"
-    >
-      <SplideSlide v-for="image of listData.media" :key="image.position">
-        <img :src="image?.preview_image?.src" :alt="image.alt" />
-      </SplideSlide>
-    </Splide>
-    </div>   
+        :options="thumbsOptions"
+        ref="thumbs"
+        class="img_gallery--splide_slide"
+      >
+        <SplideSlide v-for="image of listData.media" :key="image.position">
+          <img :src="image?.preview_image?.src" :alt="image.alt" />
+        </SplideSlide>
+      </Splide>
+    </div>
   </div>
 </template>
 
@@ -59,13 +59,6 @@ export default defineComponent({
         main.value?.sync(thumbsSplide);
       }
     });
-
-/*     const getDimensions = () => {
-      const width = document.documentElement.clientWidth;
-      const height = document.documentElement.clientHeight;
-      console.log("width",width); 
-      console.log("height",height);
-    }; */
 
     return {
       main,
