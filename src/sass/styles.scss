@@ -1,11 +1,13 @@
 @import "_config";
 
+// se cargan configuraciones globales
 body {
     background-color: var(--bg-color-body);
     font-family     : 'Roboto', sans-serif;
     box-sizing      : border-box;
 }
 
+//Diseño a contenedor principal
 .container {
     display        : flex;
     flex-direction : column;
@@ -14,26 +16,10 @@ body {
     align-items    : center;
     height         : auto;
     margin-top     : 50px;
-
-    padding: 20px;
-
-    @media screen and (min-width: 420px) {}
-
-    @media screen and (min-width: 768px) {
-        display              : grid;
-        justify-items        : center;
-        grid-template-columns: 1fr 1fr;
-        height               : inherit;
-        align-items          : start;
-        gap                  : 20px;
-
-    }
-
-    @media screen and (min-width: 1024px) {}
+    padding        : 20px;
 }
 
-
-
+// Contenedor de detalles de producto
 .product_description {
     color     : var(--font-color-black);
     margin-top: 3rem;
@@ -127,7 +113,7 @@ body {
         input[type="radio"] {
             -webkit-appearance: none;
             appearance        : none;
-            background-color  : #fff;
+            background-color  : var(--bg-color-body);
             border            : 0.15em currentColor;
             border-radius     : 50%;
             color             : currentColor;
@@ -202,30 +188,17 @@ body {
             }
 
         }
-
-        @media screen and (max-width: 420px) {
-            flex-direction : column;
-            justify-content: space-around;
-        }
-
-    }
-
-    @media screen and (min-width: 768px) {
-        margin-top: 0;
     }
 }
 
+// diseño custom para fiv de galeria de imagenes
 .img_gallery {
-
     &--splide_slide {
         margin-top: 10px;
-
-        @media screen and (max-width: 1024px) {
-            display: none;
-        }
     }
 }
 
+// Clases autogeneradas por libreria SplideJs para galeria de imagenes, se realizaron modificaciones
 .splide__slide {
     display        : flex;
     align-items    : center;
@@ -244,7 +217,7 @@ body {
 }
 
 .splide__pagination__page.is-active {
-    background-color: black;
+    background-color: var(--font-color-black);
 }
 
 .splide__pagination {
@@ -258,11 +231,9 @@ body {
 
 .splide__pagination {
     display: none;
-
-    @media screen and (max-width: 1024px) {
-        display: flex;
-    }
 }
+
+// Input type radio, uso en varian size
 
 .selector {
     position        : relative;
@@ -273,7 +244,7 @@ body {
     justify-content : space-around;
     align-items     : center;
     border-radius   : 9999px;
-    box-shadow      : 0 0 16px rgba(0, 0, 0, .2);
+    box-shadow      : 0 0 16px var(--selector-shadow);
 }
 
 .selector-item {
@@ -311,11 +282,11 @@ body {
 .selector-item_radio:checked+.selector-item_label {
     border-color: var(--font-color-black);
     color       : var(--font-color-black);
-    box-shadow  : 0 0 4px rgba(0, 0, 0, .5), 0 2px 4px rgba(0, 0, 0, .5);
+    box-shadow  : 0 0 4px var(--selector-box-shadow), 0 2px 4px var(--selector-box-shadow);
 
 }
 
-
+// Modal Permite generar contenido modal
 .modal {
     position        : fixed;
     z-index         : 999;
@@ -326,7 +297,7 @@ body {
     display         : flex;
     justify-content : center;
     align-items     : center;
-    background-color: #ffffff73;
+    background-color: var(--modal-bg-color);
     opacity         : 0;
     pointer-events  : none;
     transition      : all 1s;
@@ -338,7 +309,7 @@ body {
     align-items    : center;
     position       : relative;
     width          : 60%;
-    background     : white;
+    background     : var(--bg-color-body);
     height         : 420px;
     padding        : 3rem;
 
@@ -359,4 +330,41 @@ body {
 .modal[id|="trabajo"]:target {
     opacity       : 1;
     pointer-events: auto;
+}
+
+// Media Query, Contenido responsive
+@media screen and (max-width: 420px) {
+    .product_description {
+        &--quantity-price {
+            flex-direction : column;
+            justify-content: space-around;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        display              : grid;
+        justify-items        : center;
+        grid-template-columns: 1fr 1fr;
+        height               : inherit;
+        align-items          : start;
+        gap                  : 20px;
+    }
+
+    .product_description {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .img_gallery {
+        &--splide_slide {
+            display: none;
+        }
+    }
+
+    .splide__pagination {
+        display: flex;
+    }
 }

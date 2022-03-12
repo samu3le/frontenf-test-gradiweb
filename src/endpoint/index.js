@@ -20,7 +20,7 @@ instance.interceptors.response.use(
     const { response } = error;
     const { data, status } = response;
 
-    const { errors, message } = data;
+    const { errors } = data;
 
     const res = {};
 
